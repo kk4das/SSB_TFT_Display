@@ -75,20 +75,20 @@
  but you need to provide the code to determine what the actual values should be. You will likely need other 
  libraries like the Si5351 and a Rotary encoder library aside from the GFX and the ILI9341. 
  
- Taking the S-Meter as an example:
+ ### Taking the S-Meter as an example:
  
  To update the S-Meter display you make a call to displaySMeter(n); where n is an integer from 1 to 12 
  (representing S1-9, +10, +20 +30).  Your sketch will need a way of monitoring signal strength (an analog input 
  pin on the Arduino attached to an appropriate place on your rig) and converting it to the logarithmic S scale.
  
- SCREEN COORDINATES
+### SCREEN COORDINATES
  Coordinates work differently on displays than a typical graph where the origin 0,0 is in the middle abd positive
  and negative values move you away from the origin. For displays  0,0, the origin, is always upper left hand corner 
  of the display and you only use positive numbers for the coordinates  +X is pixels from the left edge, +Y is pixels 
  down from the top. This particular example based on a 320x240 display but should be easily portable to other 
  display sizes – but you have to keep in mind how the coordinate system works.
  
- SCREEN LAYOUT
+### SCREEN LAYOUT
  Here are a few notes about how the demonstration display is laid out.  This should help you understand the design 
  concept and allow you to begin to modify it.  
  
@@ -97,7 +97,7 @@
  display routines to update the display.   I’ll describe how the VFO displays are are defined and that will give you 
  an idea how you might modify or enhance the display.
  
- ## Active VFO - top center of the screen
+ ### Active VFO - top center of the screen
  ```
 #define DSP_VFO_ACT_X 60   // Active VFO begins 60 pixels from the left hand edge (I picked 60 by experimenting)
 #define DSP_VFO_ACT_Y 30   // Active VFO box starts 30 pixels down from the top of the screen
@@ -106,7 +106,7 @@
 #define DSP_VFO_ACT_BK ILI9341_BLACK      // This sets the background color for the Active VFO
 #define DSP_VFO_ACT_SZ 3                  // This is text size from Arduino TFT, values 1-5 1 is small 5 is large (2 was too                                                 // small, 4 was too large, 3 was just right)
 ```
-## Alternate VFO – the second VFO is placed directly below the Active VFO on the screen.
+### Alternate VFO – the second VFO is placed directly below the Active VFO on the screen.
 There are a couple of things of interest here.  For the X coordinate, instead of putting in a hard coded number I refer back to
 the #define that I used for the Active VFO (DSP_VFO_ACT).  That way, if I want to move VFO section to a different part of the
 screen I only need  to change one number DSP_VFO_ACT_X, and the alternate VFO will move as well.  Figuring out the Y coordinate
@@ -123,29 +123,29 @@ And for size 4 is
 4*CH_W
 ```
 pixels and so on.  so we have everything we need to calculate how many pixels the Active VFO takes 
- on the screen – we multiply the font size by the character height and add 16 pixels offset. The 16 was determined by 
- experimentation for something that looked good.  The code looks like this:
+on the screen – we multiply the font size by the character height and add 16 pixels offset. The 16 was determined by 
+experimentation for something that looked good.  The code looks like this:
 ``` 
 #define DSP_VFO_ALT_X DSP_VFO_ACT_X
 #define DSP_VFO_ALT_Y DSP_VFO_ACT_Y + (DSP_VFO_ACT_SZ * CH_H) + 16 
 ``` 
- Take a look the other sections of the display code and you will see similar references and calculations.  The VFO A//B 
- indicator and LSB/USB mode indicator, for example are similarly “pinned” to the Active VFO display, so if you move the 
- Active VFO display to another screen location they will move also.
+Take a look the other sections of the display code and you will see similar references and calculations.  The VFO A//B 
+indicator and LSB/USB mode indicator, for example are similarly “pinned” to the Active VFO display, so if you move the 
+Active VFO display to another screen location they will move also.
 
- In summary - each object is on the display is defined by a set of constants that indicate the X,Y coordinates
- of the object on the screen and various other attributes like text size and color.  The basic user interface display 
- object is a bounded/filed text box.  You can control the text size and color, and the box fill color.  With this basic 
- set of features you can implement a wide variety of user interface elements. The S-meter, for example, is a row of
- filled boxes.
+In summary - each object is on the display is defined by a set of constants that indicate the X,Y coordinates
+of the object on the screen and various other attributes like text size and color.  The basic user interface display 
+object is a bounded/filed text box.  You can control the text size and color, and the box fill color.  With this basic 
+set of features you can implement a wide variety of user interface elements. The S-meter, for example, is a row of
+filled boxes.
     
- ## HARDWARE NOTES
- My test sketch uses an Arduino Nano. The display is an HiLetgo 2.2 Inch ILI9341 SPI TFT LCD Display 240x320 ILI9341, 
- but any ILI9341 display should work. There are many sources.  Please note that the Arduino has 5V logic levels,
- but the display requires 3.3V - so you need some sort of level shifter.  I used the"HiLetgo 10pcs 4 Channels IIC I2C 
- Logic Level Converter Bi-Directional 3.3V-5V Shifter Module for Arduino"  I used hardware SPI and the pinouts are
- standard as follows:
-      
+## HARDWARE NOTES
+My test sketch uses an Arduino Nano. The display is an HiLetgo 2.2 Inch ILI9341 SPI TFT LCD Display 240x320 ILI9341, 
+but any ILI9341 display should work. There are many sources.  Please note that the Arduino has 5V logic levels,
+but the display requires 3.3V - so you need some sort of level shifter.  I used the"HiLetgo 10pcs 4 Channels IIC I2C 
+Logic Level Converter Bi-Directional 3.3V-5V Shifter Module for Arduino"  I used hardware SPI and the pinouts are
+standard as follows:
+```      
         Arduino 
          Pin       TFT Pin
       -----------|---------    
@@ -155,7 +155,7 @@ pixels and so on.  so we have everything we need to calculate how many pixels th
           11     |  MOSI - fixed
           12     |  MISO - fixed
           13     |  CLK  - fixed
-          
+ ```         
  That is all the wiring you need for the demonstration sketch.
  
  ## BUILDING THE DEMONSTRATION SKETCH
