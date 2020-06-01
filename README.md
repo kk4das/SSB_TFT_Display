@@ -1,15 +1,20 @@
 # SSB_TFT_Display V1.0
 
-## KK4DAS, Dean Souleles, KK4DAS@gmail.com, May 30, 2020
-  * Basic radio display panel for a SSB transsceiver
-  * Designed for a 320x240 Color TFT (non touch)
-  * Tested with an ILI9341 display
+## KK4DAS
+- Dean Souleles
+- KK4DAS@gmail.com
+- May 30, 2020
+
+### Features
+- Basic radio display panel for a SSB transsceiver
+- Designed for a 320x240 Color TFT (non touch)
+- Tested with an ILI9341 display
   
-  Requires the following libararies
-  * Adafruit_GFX
-  * Adafruit_ILI9341
+### Requires the following libararies
+- Adafruit_GFX
+- Adafruit_ILI9341
   
-  Implements a basic SSB display console with the following features
+###  Implements a basic SSB display console with the following features
      Dual VFO A/B
      Mode indicator  SSB/LSB
      Tx/Rx ndicator
@@ -162,7 +167,7 @@ pixels and so on.  so we have everything we need to calculate how many pixels th
  - SSB_TFT_Display.h
  - SSB_TFT_Display.ino
 
- Use the Arduino IDE library manager to install teh following libraries
+ Use the Arduino IDE library manager to install the following libraries
  - Adafruit_GFX
  - Adafruit_ILI9341
     
