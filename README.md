@@ -1,12 +1,13 @@
-#SSB_TFT_Display
-  KK4DAS, Dean Souleles, KK4DAS@gmail.com
-  May 30, 2020
-  Basic radio display panel for a SSB transsceiver
-  Designed for a 320x240 Color TFT (non touch)
-  Tested with an ILI9341 display
-  Requires the following libraries be installed:
-    Adafruit_GFX
-    Adafruit_ILI9341
+SSB_TFT_Display
+
+  KK4DAS, Dean Souleles, KK4DAS@gmail.com, May 30, 2020
+  * Basic radio display panel for a SSB transsceiver
+  * Designed for a 320x240 Color TFT (non touch)
+  * Tested with an ILI9341 display
+  
+  Requires the following libararies
+  * Adafruit_GFX
+  * Adafruit_ILI9341
   
   Implements a basic SSB display console with the following features
      Dual VFO A/B
@@ -34,21 +35,21 @@
         Ver   Rig Name   Call
  
 This module provides the following radio console dsiplayfunctions:
-   displaySetup     - initialize the display and displays the startup values - call once from your setup function
-   displayBanner    - Displays a text banner across the bottom of the screen
-   displayActVFO    - Displays the frequency of the Active VFO
-   displayAltVFO    - Displays the frequency of the Alternate VFO
-   displayVFOAB     - Displays the indicator which VFO is active (A or B)
-   displayTxRx      - Displays whether the rig is in (Tx or Rx)
-   displayMode      - Displays the whiuch sideband is selected (LSB or USB) 
-   displayIncr      - Displays the tuning increment (10, 100, 1K 10K, 100K, 1M)
-   displaySMeter    - Displays the S Meter (1-9 are gray, +10 +20 and +30 are red
+* displaySetup     - initialize the display and displays the startup values - call once from your setup function
+* displayBanner    - Displays a text banner across the bottom of the screen
+* displayActVFO    - Displays the frequency of the Active VFO
+* displayAltVFO    - Displays the frequency of the Alternate VFO
+* displayVFOAB     - Displays the indicator which VFO is active (A or B)
+* displayTxRx      - Displays whether the rig is in (Tx or Rx)
+* displayMode      - Displays the whiuch sideband is selected (LSB or USB) 
+* displayIncr      - Displays the tuning increment (10, 100, 1K 10K, 100K, 1M)
+* displaySMeter    - Displays the S Meter (1-9 are gray, +10 +20 and +30 are red
  
  This module also provides the following general purpose displauy functions:
-   displayClearScreen     - fills the screen with the selected backgrond color
-   displayPrintat         - prints text or nubmers on the screen at a specific location
-   displayDrawBoundingBox - draw a box on the screen and fills it with a background color
-   displayDrawTextBox     - displays text inside a boundig box
+ * displayClearScreen     - fills the screen with the selected backgrond color
+ * displayPrintat         - prints text or nubmers on the screen at a specific location
+ *  displayDrawBoundingBox - draw a box on the screen and fills it with a background color
+ *  displayDrawTextBox     - displays text inside a boundig box
  
  Design notes and how to use the code
  
@@ -89,14 +90,11 @@ This module provides the following radio console dsiplayfunctions:
  an idea how you might modify or enhance the display.
  
  Active VFO - top center of the screen
- #define DSP_VFO_ACT_X 60   // Active VFO begins 60 pixels from the left hand edge (I picked 60 by experimenting)
- #define DSP_VFO_ACT_Y 30   // Active VFO box starts 30 pixels down from the top of the screen (Try changing it to 50 
-                            // and see what happens)
- #define DSP_VFO_ACT_COLOR ILI9341_GREEN   // This sets the text color for the Frequency display 
-                                           // use whatever colors you like
- #define DSP_VFO_ACT_BK ILI9341_BLACK      // This sets the background color for the Active VFO
- #define DSP_VFO_ACT_SZ 3                  // This is text size from Arduino TFT, values 1-5 1 is small 5 is large 
-                                           // (2 was too small, 4 was too large, 3 was just right)
+* #define DSP_VFO_ACT_X 60   // Active VFO begins 60 pixels from the left hand edge (I picked 60 by experimenting)
+* #define DSP_VFO_ACT_Y 30   // Active VFO box starts 30 pixels down from the top of the screen (Try changing it to 50 and see what happens)
+* #define DSP_VFO_ACT_COLOR ILI9341_GREEN   // This sets the text color for the Frequency display. Use whatever colors you like
+* #define DSP_VFO_ACT_BK ILI9341_BLACK      // This sets the background color for the Active VFO
+* #define DSP_VFO_ACT_SZ 3                  // This is text size from Arduino TFT, values 1-5 1 is small 5 is large (2 was too small, 4 was too large, 3 was just right)
                                            
  Alternate VFO – the second VFO is placed directly below the Active VFO on the screen.  There are a couple of things of  
  interest here.  For the X coordinate, instead of putting in a hard coded number I refer back to the #define that I used 
@@ -111,8 +109,8 @@ This module provides the following radio console dsiplayfunctions:
  on the screen – we multiply the font size by the character height and add 16 pixels offset. The 16 was determined by 
  experimentation for something that looked good.  The code looks like this:
  
- #define DSP_VFO_ALT_X DSP_VFO_ACT_X
- #define DSP_VFO_ALT_Y DSP_VFO_ACT_Y + (DSP_VFO_ACT_SZ * CH_H) + 16 
+* #define DSP_VFO_ALT_X DSP_VFO_ACT_X
+* #define DSP_VFO_ALT_Y DSP_VFO_ACT_Y + (DSP_VFO_ACT_SZ * CH_H) + 16 
  
  Take a look the other sections of the display code and you will see similar references and calculations.  The VFO A//B 
  indicator and LSB/USB mode indicator, for example are similarly “pinned” to the Active VFO display, so if you move the 
@@ -149,13 +147,13 @@ This module provides the following radio console dsiplayfunctions:
  Create a folder called SSB_TFT_Display_Demo
  
  Copy all three files to that folder
-    SSB_TFT_Display_Demo.ino
-    SSB_TFT_Display.h
-    SSB_TFT_Display.ino
+ * SSB_TFT_Display_Demo.ino
+ * SSB_TFT_Display.h
+ * SSB_TFT_Display.ino
 
  Use the Arduino IDE library manager to install teh following libraries
-    Adafruit_GFX
-    Adafruit_ILI9341
+ * Adafruit_GFX
+ * Adafruit_ILI9341
     
  Compile and upload the sketch
  
