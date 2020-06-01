@@ -49,7 +49,7 @@
 - displayAltVFO    - Displays the frequency of the Alternate VFO
 - displayVFOAB     - Displays the indicator which VFO is active (A or B)
 - displayTxRx      - Displays whether the rig is in (Tx or Rx)
-- displayMode      - Displays the whiuch sideband is selected (LSB or USB) 
+- displayMode      - Displays the which sideband is selected (LSB or USB) 
 - displayIncr      - Displays the tuning increment (10, 100, 1K 10K, 100K, 1M)
 - displaySMeter    - Displays the S Meter (1-9 are gray, +10 +20 and +30 are red
  
