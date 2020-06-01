@@ -42,7 +42,7 @@
   |     Ver   Rig Name   Call         |
   |___________________________________|
 ```  
-## This module provides the following radio console dsiplayfunctions:
+## This module provides the following radio console displayfunctions:
 - displaySetup     - initialize the display and displays the startup values - call once from your setup function
 - displayBanner    - Displays a text banner across the bottom of the screen
 - displayActVFO    - Displays the frequency of the Active VFO
