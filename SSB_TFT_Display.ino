@@ -160,14 +160,6 @@
  *    
  * Compile and upload the sketch
  ******************************************************************************************************************       
-  
-#define TFT_CS 10
-#define TFT_MOSI 11
-#define TFT_CLK 13
-#define TFT_RST 8
-#define TFT_MISO 12
- * 
- * BUILDING 
 */
 
 #include "Adafruit_GFX.h"
