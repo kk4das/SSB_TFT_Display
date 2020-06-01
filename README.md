@@ -1,4 +1,4 @@
-SSB_TFT_Display
+SSB_TFT_Display V1.0
 
   KK4DAS, Dean Souleles, KK4DAS@gmail.com, May 30, 2020
   * Basic radio display panel for a SSB transsceiver
