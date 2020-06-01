@@ -30,7 +30,7 @@
           
  ## Default Screeen Layout
 ```
-  _________________________________
+  ____________________________________
   |       A 7.200.000 LSB             | -- VFO A/B indicator, Active VFO Freq, LSB/USB inidicator
   |      Rx 7.048.000 100K            | -- Rx/Tx indicator, Alternate VFO Freq, Tuning Increment
   |                                   | 
