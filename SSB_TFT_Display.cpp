@@ -164,7 +164,7 @@
 
 #include "Adafruit_GFX.h"
 #include "Adafruit_ILI9341.h"
-
+#include "SSB_TFT_Display.h"                    // required constants for VFO A/b, Mode LSB/USB, etc 
 
 // For the Adafruit shield, these are the default.
 #define TFT_DC 9
@@ -508,7 +508,7 @@ void displaySetup(String banner,
   displayBanner(banner);
   displayActVFO(vfoActfreq);
   displayAltVFO(vfoAltfreq);
-  displayVFOAB(active_vfo);
+  displayVFOAB(activeVFO);
   displayTxRx(tx_rx);
   displayMode(sideband);
   displayIncr(increment);
