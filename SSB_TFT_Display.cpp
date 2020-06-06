@@ -53,19 +53,19 @@
  * 
  * Design notes and how to use the code
  * 
- * DESIGN PRINCIPLES
- * Good software design principles are to use as few hard-coded numbers as possible.  
- * Wherever possible I have used #defines  for any number that will be used more than one place in the code.  
- * For example  #define DSP_VFO_ACT_X 60 defines the X coordinate (how far from the left of the screen) 
- * of the Active VFO frequency display. You will see multiple references to DSP_VFO_ACT_X  throughout the code, 
- * but I never use the hardcoded number 60 again.  Change it once – and it is changed throughout.
- * 
  * NOTE TO BUILDERS
  * This is not a complete radio control sketch. It is the Display software only. In the spirit of modular design 
  * it is stand-alone and not dependent on using an SI-5351 or any other specific hardware, or on my particular 
  * hardware selection of switches, buttons and knobs.  The demonstration sketch shows how to update the display,  
  * but you need to provide the code to determine what the actual values should be. You will likely need other 
  * libraries like the Si5351 and a Rotary encoder library aside from the GFX and the ILI9341. 
+ * 
+ * DESIGN PRINCIPLES
+ * Good software design principles are to use as few hard-coded numbers as possible.  
+ * Wherever possible I have used #defines  for any number that will be used more than one place in the code.  
+ * For example  #define DSP_VFO_ACT_X 60 defines the X coordinate (how far from the left of the screen) 
+ * of the Active VFO frequency display. You will see multiple references to DSP_VFO_ACT_X  throughout the code, 
+ * but I never use the hardcoded number 60 again.  Change it once – and it is changed throughout.
  * 
  * Taking the S-Meter as an example:
  * 
@@ -152,7 +152,7 @@
  * Copy all three files to that folder
  *    SSB_TFT_Display_Demo.ino
  *    SSB_TFT_Display.h
- *    SSB_TFT_Display.ino
+ *    SSB_TFT_Display.cpp
  *
  * Use the Arduino IDE library manager to install teh following libraries
  *    Adafruit_GFX
@@ -262,8 +262,7 @@ Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC);
 ///////////////////////////////////////////////////////////////////////////
 #ifdef DEBUG
 int ln=0;
-void displayPrintln(String s ) {
-ugging. 
+void displayPrintln(String s ) { 
   if (ln==14) {
     tft.fillScreen(ILI9341_BLACK);
     tft.setCursor(0, 0);
@@ -383,7 +382,7 @@ void displayBanner(String s) {
 ///////////////////////////////////////////////////////////////////////////
 // displayActVFO(uint32_t freq)
 // displayAltVFO(uint32_t freq
-// Formats the frequenccy display and displays
+// Formats and displays Active and Alternat VFO frequencies
 // Legal values:  Frequency in Hz
 //
 // To do - comibine into one function
@@ -421,7 +420,7 @@ void displayAltVFO(uint32_t freq) {
 }
 
 ///////////////////////////////////////////////////////////////////////////
-// displayVFOAB(int vfo
+// displayVFOAB(int vfo)
 // Displays which VFO is currently active A or B
 // Legal values are VFOA and VFOB
 ///////////////////////////////////////////////////////////////////////////
@@ -437,7 +436,7 @@ void displayVFOAB(int vfo) {
 
 ///////////////////////////////////////////////////////////////////////////
 // displayTxRx(int tx_rx
-// Displays whether the radio is currenlty transmittig or receiveing
+// Displays whether the radio is currenlty transmitting or receiveing
 // Legal values are TX and RX
 ///////////////////////////////////////////////////////////////////////////
 void displayTxRx(int tx_rx) {
